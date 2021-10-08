@@ -24,6 +24,7 @@
     "strapi-plugin-i18n": "3.6.8",
     "strapi-plugin-upload": "3.6.8",
     "strapi-plugin-users-permissions": "3.6.8",
+    "strapi-provider-upload-google-cloud-storage": "^3.6.8",
     "strapi-utils": "3.6.8"
   },
   "author": {
@@ -33,7 +34,7 @@
     "uuid": "617387c7-82c1-4e4e-a7db-cf8934c93f22"
   },
   "engines": {
-    "node": ">=10.16.0 <=14.x.x",
+    "node": ">=14.0.0",
     "npm": "^6.0.0"
   },
   "license": "MIT"
