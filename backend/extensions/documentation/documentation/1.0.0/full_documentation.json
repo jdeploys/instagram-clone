@@ -23,16 +23,16 @@
   },
   "servers": [
     {
-      "url": "http://localhost:1337",
-      "description": "Development server"
+      "url": "https://jsbackend.herokuapp.com/",
+      "description": "Production server"
     },
     {
-      "url": "YOUR_STAGING_SERVER",
+      "url": "https://jsbackend.herokuapp.com/",
       "description": "Staging server"
     },
     {
-      "url": "YOUR_PRODUCTION_SERVER",
-      "description": "Production server"
+      "url": "http://localhost:1337",
+      "description": "Development server"
     }
   ],
   "externalDocs": {
@@ -2383,7 +2383,10 @@
               "application/json": {
                 "schema": {
                   "properties": {
-                    "foo": {
+                    "identifier": {
+                      "type": "string"
+                    },
+                    "password": {
                       "type": "string"
                     }
                   }

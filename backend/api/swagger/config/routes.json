@@ -1,0 +1,24 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/swagger/openapi.json",
+      "handler": "swagger.index",
+      "config": {
+        "policies": [
+          "plugins::documentation.index"
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/swagger/v:major(\\d+).:minor(\\d+).:patch(\\d+)/openapi.json",
+      "handler": "swagger.index",
+      "config": {
+        "policies": [
+          "plugins::documentation.index"
+        ]
+      }
+    }
+  ]
+}
