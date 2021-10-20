@@ -2,32 +2,37 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "DOCUMENTATION",
+    "title": "justagram documentation",
     "description": "",
     "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
     "contact": {
-      "name": "TEAM",
-      "email": "contact-email@something.io",
+      "name": "jskim",
+      "email": "dcjuja@gmail.com",
       "url": "mywebsite.io"
     },
     "license": {
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "10/11/2021 10:07:32 PM"
+    "x-generation-date": "10/20/2021 11:39:35 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
     "showGeneratedFiles": true,
-    "generateDefaultResponse": true
+    "generateDefaultResponse": true,
+    "pluginsForWhichToGenerateDoc": [
+      "email",
+      "upload",
+      "users-permissions"
+    ]
   },
   "servers": [
     {
-      "url": "https://jsbackend.herokuapp.com/",
+      "url": "https://jsbackend.herokuapp.com",
       "description": "Production server"
     },
     {
-      "url": "https://jsbackend.herokuapp.com/",
+      "url": "https://jsbackend.herokuapp.com",
       "description": "Staging server"
     },
     {
@@ -37,7 +42,7 @@
   ],
   "externalDocs": {
     "description": "Find out more",
-    "url": "https://strapi.io/documentation/developer-docs/latest/getting-started/introduction.html"
+    "url": "https://strapi.io/documentation/"
   },
   "security": [
     {
@@ -1056,6 +1061,151 @@
         "parameters": [
           {
             "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/swagger/openapi.json": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Swagger"
+        ],
+        "parameters": []
+      }
+    },
+    "/swagger/v{major}.{minor}.{patch}/openapi.json": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Swagger"
+        ],
+        "parameters": [
+          {
+            "name": "major",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "minor",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "patch",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -2382,14 +2532,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "identifier": {
-                      "type": "string"
-                    },
-                    "password": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/UsersPermissionsUser"
                 }
               }
             }
@@ -2433,10 +2576,13 @@
           "description": "",
           "required": true,
           "content": {
-            "application/json": {
+            "application/x-www-form-urlencoded": {
               "schema": {
                 "properties": {
-                  "foo": {
+                  "identifier": {
+                    "type": "string"
+                  },
+                  "password": {
                     "type": "string"
                   }
                 }
@@ -3901,6 +4047,9 @@
     },
     {
       "name": "Reply"
+    },
+    {
+      "name": "Swagger"
     },
     {
       "name": "Email - Email"
