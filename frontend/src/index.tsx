@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// global css
 import './index.css';
+// 구동 전 필요한 설정 값
+import './config';
 import App from './component/App';
 import reportWebVitals from './reportWebVitals';
 
