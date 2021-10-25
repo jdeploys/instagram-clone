@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import Input from '@/component/form/Input';
-import { signIn, SignInParams } from '@/component/api/users.api';
+import { signIn, SignInParams } from '@/api/users.api';
 import Button from '@/component/button/Button';
 import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
+import { RoutePath } from '@/component/router/@types';
 
 const SignInPage = () => {
+  const history = useHistory();
   const [data, setData] = useState<SignInParams>({
     identifier: '',
     password: '',
@@ -76,7 +79,14 @@ const SignInPage = () => {
       </div>
       <div className="flex mt-10">
         계정이 없으신가요?{' '}
-        <button className="ml-2 text-blue-500 font-semibold">가입하기</button>
+        <button
+          className="ml-2 text-blue-500 font-semibold"
+          onClick={() => {
+            history.push(RoutePath.signUp);
+          }}
+        >
+          가입하기
+        </button>
       </div>
       <div className="mt-20 text-center text-gray-400">
         이 앱은 단순 공부용으로 제작되었습니다.

@@ -18,7 +18,7 @@ const Button = (props: ButtonProps) => {
 
   return (
     <button {...cloneProps} className={combinedClassName}>
-      로그인
+      {props.children}
     </button>
   );
 };
