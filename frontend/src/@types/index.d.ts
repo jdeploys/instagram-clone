@@ -329,12 +329,11 @@ declare namespace Paths {
   namespace AuthLocal {
     namespace Post {
       export interface RequestBody {
-        foo?: string;
+        identifier?: string;
+        password?: string;
       }
       namespace Responses {
-        export interface $200 {
-          foo?: string;
-        }
+        export type $200 = Components.Schemas.UsersPermissionsUser;
         export type $403 = Components.Schemas.Error;
         export type $404 = Components.Schemas.Error;
         export type Default = Components.Schemas.Error;
