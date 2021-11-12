@@ -5,6 +5,8 @@ export interface SignInParams {
   password: string;
 }
 
+export type SignUpParams = Components.Schemas.NewUsersPermissionsUser;
+
 // 로그인
 export const signIn = (params: SignInParams) => {
   const formData = new FormData();
@@ -17,3 +19,7 @@ export const signIn = (params: SignInParams) => {
     },
   });
 };
+
+// 회원가입
+export const signUp = (params: SignUpParams) =>
+  axios.post<SignUpParams>('/auth/local/register', params);
