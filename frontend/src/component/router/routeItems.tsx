@@ -14,4 +14,14 @@ export const routeItems: RouteProps[] = [
     exact: true,
     component: loadable(() => import('../../page/auth/SignInPage')),
   },
+  {
+    path: [RoutePath.articleList],
+    exact: true,
+    component: loadable(() => import('../../page/article/ArticlePage')),
+  },
+  {
+    path: [RoutePath.articleEdit],
+    exact: true,
+    component: loadable(() => import('../../page/article/WriteArticlePage')),
+  },
 ];

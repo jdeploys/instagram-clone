@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import Input from '@/component/form/Input';
-import { signIn, SignInParams } from '@/api/users.api';
 import Button from '@/component/button/Button';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
 import { RoutePath } from '@/component/router/@types';
+import { AuthContainer } from '@/container/auth';
+import { SignInParams } from '@/api/@types/user';
 
 const SignInPage = () => {
   const history = useHistory();
+  const { signIn } = AuthContainer.useContainer();
   const [data, setData] = useState<SignInParams>({
     identifier: '',
     password: '',
@@ -16,9 +18,7 @@ const SignInPage = () => {
   const onClickSignIn = () => {
     signIn(data)
       .then((result) => {
-        if (result.status === 200) {
-          toast('로그인 되었습니다.');
-        }
+        history.push(RoutePath.articleList);
       })
       .catch((e) => {
         toast.error(
@@ -50,6 +50,11 @@ const SignInPage = () => {
           className="mx-10 mt-2"
           type="password"
           placeholder="비밀번호"
+          onKeyPress={(e) => {
+            if (e.key.toLowerCase() === 'enter') {
+              onClickSignIn();
+            }
+          }}
           onChangeText={(value) => {
             setData((prev) => ({
               ...prev,

@@ -3,12 +3,15 @@ import RootRouter from './router/RootRouter';
 import Loading from './loader/Loading';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthContainer } from '@/container/auth';
 
 function App() {
   return (
     <Suspense fallback={Loading}>
-      <ToastContainer />
-      <RootRouter />
+      <AuthContainer.Provider>
+        <ToastContainer />
+        <RootRouter />
+      </AuthContainer.Provider>
     </Suspense>
   );
 }

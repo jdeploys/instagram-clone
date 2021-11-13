@@ -1,11 +1,6 @@
 import axios from 'axios';
+import { SignInParams, SignUpParams, TokenResult } from './@types/user';
 
-export interface SignInParams {
-  identifier: string;
-  password: string;
-}
-
-export type SignUpParams = Components.Schemas.NewUsersPermissionsUser;
 
 // 로그인
 export const signIn = (params: SignInParams) => {
@@ -13,7 +8,7 @@ export const signIn = (params: SignInParams) => {
   formData.append('identifier', params.identifier);
   formData.append('password', params.password);
 
-  return axios.post<Components.Schemas.UsersPermissionsUser>('/auth/local', formData, {
+  return axios.post<TokenResult>('/auth/local', formData, {
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
     },

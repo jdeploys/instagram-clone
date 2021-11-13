@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Input from '@/component/form/Input';
 import Button from '@/component/button/Button';
-import { signUp, SignUpParams } from '@/api/users.api';
+import { signUp } from '@/api/users.api';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
 import { RoutePath } from '@/component/router/@types';
+import { SignUpParams } from '@/api/@types/user';
 
 const SignUpPage = () => {
   const [data, setData] = useState<SignUpParams>({

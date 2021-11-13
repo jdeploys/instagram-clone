@@ -1,7 +1,21 @@
 import axios from 'axios';
+import { loadToken } from '@/shared/token';
 
 // API 주소 연결
 axios.defaults.baseURL = 'https://jsbackend.herokuapp.com/';
+
+// 공통 요청 처리
+axios.interceptors.request.use(function (config) {
+  const token = loadToken();
+  if (token) {
+    config.headers = {
+      ...config.headers,
+      Authorization: `bearer ${token}`,
+    };
+  }
+
+  return config;
+});
 
 // 공통 오류 처리
 axios.interceptors.response.use(

@@ -333,7 +333,10 @@ declare namespace Paths {
         password?: string;
       }
       namespace Responses {
-        export type $200 = Components.Schemas.UsersPermissionsUser;
+        export interface $200 {
+          jwt?: string;
+          user?: Components.Schemas.UsersPermissionsUser;
+        }
         export type $403 = Components.Schemas.Error;
         export type $404 = Components.Schemas.Error;
         export type Default = Components.Schemas.Error;
