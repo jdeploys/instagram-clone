@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '@/component/form/Input';
 import Button from '@/component/button/Button';
 import { toast } from 'react-toastify';
@@ -9,26 +9,28 @@ import { SignInParams } from '@/api/@types/user';
 
 const SignInPage = () => {
   const history = useHistory();
-  const { signIn } = AuthContainer.useContainer();
+  const { signIn, isSignIn } = AuthContainer.useContainer();
   const [data, setData] = useState<SignInParams>({
     identifier: '',
     password: '',
   });
 
+  useEffect(() => {
+    if (isSignIn) {
+      history.push(RoutePath.articleList);
+    }
+  }, [isSignIn]);
+
   const onClickSignIn = () => {
-    signIn(data)
-      .then((result) => {
-        history.push(RoutePath.articleList);
-      })
-      .catch((e) => {
-        toast.error(
-          <span>
-            로그인에 실패했습니다.
-            <br />
-            {e}
-          </span>
-        );
-      });
+    signIn(data).catch((e) => {
+      toast.error(
+        <span>
+          로그인에 실패했습니다.
+          <br />
+          {e}
+        </span>
+      );
+    });
   };
 
   return (
