@@ -1,6 +1,6 @@
 import { createContainer } from 'unstated-next';
 import { useState } from 'react';
-import { loadToken, saveToken } from '@/shared/token';
+import { loadToken, removeToken, saveToken } from '@/shared/token';
 import { signIn } from '@/api/users.api';
 import { SignInParams, User } from '@/api/@types/user';
 
@@ -10,13 +10,13 @@ const useAuthHooks = () => {
 
   // 로그인 여부
   const [isSignIn, setIsSignIn] = useState(!!localToken);
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User | null>();
 
   const handleSignIn = (params: SignInParams) => {
     return signIn(params)
       .then((result) => {
         setIsSignIn(true);
-        saveToken(result.data.jwt);
+        saveToken(result.data.jwt || '');
         setUser(result.data.user);
         return result.data;
       })
@@ -26,9 +26,15 @@ const useAuthHooks = () => {
       });
   };
 
+  const signOut = () => {
+    removeToken();
+    setUser(null);
+  }
+
   return {
     isSignIn,
     signIn: handleSignIn,
+    signOut,
     user,
   };
 };

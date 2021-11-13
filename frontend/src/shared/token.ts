@@ -7,3 +7,7 @@ export const loadToken = () => {
 export const saveToken = (token: string) => {
   localStorage.setItem(localStorageTokenKey, token);
 };
+
+export const removeToken = () => {
+  localStorage.removeItem(localStorageTokenKey);
+}
