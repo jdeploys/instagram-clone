@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import Input from '@/component/form/Input';
 import Button from '@/component/button/Button';
-import { signUp } from '@/api/users.api';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
 import { RoutePath } from '@/component/router/@types';
-import { SignUpParams } from '@/api/@types/user';
+import { Auth } from '@/api/Auth';
+import { httpClient } from '@/config/axios';
+import { NewUsersPermissionsUser } from '@/api/data-contracts';
 
 const SignUpPage = () => {
-  const [data, setData] = useState<SignUpParams>({
+  const authApi = new Auth(httpClient);
+  const [data, setData] = useState<NewUsersPermissionsUser>({
     email: '',
     password: '',
     username: '',
@@ -16,7 +18,7 @@ const SignUpPage = () => {
   const history = useHistory();
 
   const onClickSignUp = () => {
-    signUp(data)
+    authApi.localRegisterCreate(data)
       .then((result) => {
         if (result.status === 200) {
           toast('회원가입 되었습니다!', {

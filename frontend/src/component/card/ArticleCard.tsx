@@ -1,9 +1,9 @@
 import React from 'react';
-import { Article } from '@/api/@types/article';
 import heartImage from '@/asset/button/heart.svg';
 import chatImage from '@/asset/button/chat.svg';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { Article } from '@/api/data-contracts';
 
 interface ArticleCardProps {
   article: Article;

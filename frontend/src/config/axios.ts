@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { loadToken } from '@/shared/token';
+import { HttpClient } from '@/api/http-client';
 
 // API 주소 연결
 axios.defaults.baseURL = 'https://jsbackend.herokuapp.com/';
@@ -36,3 +37,5 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export const httpClient = new HttpClient();

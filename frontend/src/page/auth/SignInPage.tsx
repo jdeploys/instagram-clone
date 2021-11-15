@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
 import { RoutePath } from '@/component/router/@types';
 import { AuthContainer } from '@/container/auth';
-import { SignInParams } from '@/api/@types/user';
+import { SignInParams } from '@/api/@types/auth';
 
 const SignInPage = () => {
   const history = useHistory();

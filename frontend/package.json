@@ -30,7 +30,9 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "gen": "dtsgen --url https://jsbackend.herokuapp.com/swagger/openapi.json --out src/@types/index.d.ts && prettier --write \"./src/@types/index.d.ts\""
+    "ts-check": "tsc --skipLibCheck --noEmit",
+    "gen": "dtsgen --url https://jsbackend.herokuapp.com/swagger/openapi.json --out src/@types/index.d.ts && prettier --write \"./src/@types/index.d.ts\"",
+    "gen-api": "npx swagger-typescript-api -p https://jsbackend.herokuapp.com/swagger/openapi.json -o ./src/api --axios --modular --single-http-client  --extract-request-params --extract-request-body"
   },
   "eslintConfig": {
     "extends": [
