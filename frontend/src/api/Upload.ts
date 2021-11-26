@@ -20,7 +20,7 @@ export class Upload<SecurityDataType = unknown> {
   }
 
   /**
-   * @description Upload a file
+   * @description 파일 업로드
    *
    * @tags Upload - File
    * @name UploadCreate
@@ -33,7 +33,7 @@ export class Upload<SecurityDataType = unknown> {
       method: 'POST',
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: ContentType.FormData,
       format: 'json',
       ...params,
     });

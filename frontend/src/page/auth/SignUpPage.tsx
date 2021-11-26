@@ -24,7 +24,7 @@ const SignUpPage = () => {
           toast('회원가입 되었습니다!', {
             autoClose: 1000,
           });
-          history.push(RoutePath.signIn);
+          history.push(RoutePath.SignIn);
         }
       })
       .catch((e) => {

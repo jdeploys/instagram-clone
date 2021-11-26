@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { ArticleContainer } from '@/container/article';
 import { toast } from 'react-toastify';
-import CardSkeleton from '@/component/skeleton/card';
 import ArticleCard from '@/component/card/ArticleCard';
+
+const pageCount = 10;
 
 const ArticleList = () => {
   const { articles, articleCount, getArticles } = ArticleContainer.useContainer();
   const [page, setPage] = useState({
-    _limit: 10,
+    _limit: pageCount,
     _start: 0,
   });
 
   const refresh = () => {
     setPage({
-      _limit: 10,
+      _limit: pageCount,
       _start: 0,
     });
   };
@@ -22,7 +23,7 @@ const ArticleList = () => {
   const next = () => {
     setPage((prevState) => ({
       ...prevState,
-      _start: prevState._start + 1,
+      _start: prevState._start + pageCount,
     }));
   };
 
@@ -30,7 +31,7 @@ const ArticleList = () => {
     if (articleCount !== 0 && articleCount <= articles.length) {
       return;
     }
-    getArticles(page).catch((e) => {
+    getArticles({ _sort: 'id:desc', ...page }).catch((e) => {
       toast.error(e);
     });
   }, [page]);
@@ -40,7 +41,11 @@ const ArticleList = () => {
       dataLength={articleCount}
       pullDownToRefreshThreshold={200}
       hasMore={articleCount > articles.length}
-      loader={<CardSkeleton />}
+      loader={
+        <p className="text-center py-5">
+          <b>🙏 정보를 가져오는 중이에요!</b>
+        </p>
+      }
       endMessage={
         <p className="text-center py-5">
           <b>👋 마지막 게시글이에요!</b>

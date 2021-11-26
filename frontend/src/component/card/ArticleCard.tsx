@@ -35,7 +35,14 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           </button>
         </div>
         <div className="font-semibold">100 Likes</div>
-        <div className="mt-2">{article.content}</div>
+        {article.content && (
+          <div
+            className="mt-2"
+            dangerouslySetInnerHTML={{
+              __html: article.content,
+            }}
+          />
+        )}
       </div>
     </div>
   );

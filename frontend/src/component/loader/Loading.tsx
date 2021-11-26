@@ -1,7 +1,12 @@
 import React from 'react';
+import TwinklingStar from '@/component/loader/TwinklingStar';
 
-const Loading = () => {
-  return <div>Loading ...</div>;
+interface LoadingProps {
+  isShow?: boolean;
+}
+
+const Loading = ({ isShow }: LoadingProps) => {
+  return isShow ? <TwinklingStar /> : null;
 };
 
 export default Loading;

@@ -6,7 +6,7 @@ import { ArticleContainer } from '@/container/article';
 const ArticlePage = () => {
   return (
     <div>
-      <AppHeader />
+      <AppHeader useWrite />
       <div className="w-full border-t border-gray-200" />
       <ArticleContainer.Provider>
         <ArticleList />

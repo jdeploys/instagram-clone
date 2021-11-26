@@ -5,22 +5,22 @@ import loadable from '@loadable/component';
 
 export const routeItems: RouteProps[] = [
   {
-    path: [RoutePath.signUp],
+    path: [RoutePath.SignUp],
     exact: true,
     component: loadable(() => import('../../page/auth/SignUpPage')),
   },
   {
-    path: [RoutePath.signIn, RoutePath.root],
+    path: [RoutePath.SignIn, RoutePath.Root],
     exact: true,
     component: loadable(() => import('../../page/auth/SignInPage')),
   },
   {
-    path: [RoutePath.articleList],
+    path: [RoutePath.ArticleList],
     exact: true,
     component: loadable(() => import('../../page/article/ArticlePage')),
   },
   {
-    path: [RoutePath.articleEdit],
+    path: [RoutePath.ArticleEdit, RoutePath.CreateArticle],
     exact: true,
     component: loadable(() => import('../../page/article/WriteArticlePage')),
   },

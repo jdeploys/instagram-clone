@@ -394,7 +394,23 @@ export interface TestCreatePayload {
 }
 
 export interface UploadCreatePayload {
-  foo?: string;
+  /** The file(s) to upload. The value(s) can be a Buffer or Stream */
+  files?: File;
+
+  /** (optional): The folder where the file(s) will be uploaded to (only supported on strapi-upload-aws-s3 now). */
+  path?: string;
+
+  /** (optional): The ID of the entry which the file(s) will be linked to. */
+  refId?: string;
+
+  /** (optional): The name of the model which the file(s) will be linked to. */
+  ref?: string;
+
+  /** (optional): The name of the plugin where the model is located. */
+  source?: string;
+
+  /** (optional): The field of the entry which the file(s) will be precisely linked to. */
+  field?: string;
 }
 
 export interface RolesListParams {

@@ -17,7 +17,7 @@ const SignInPage = () => {
 
   useEffect(() => {
     if (isSignIn) {
-      history.push(RoutePath.articleList);
+      history.push(RoutePath.ArticleList);
     }
   }, [isSignIn]);
 
@@ -89,7 +89,7 @@ const SignInPage = () => {
         <button
           className="ml-2 text-blue-500 font-semibold"
           onClick={() => {
-            history.push(RoutePath.signUp);
+            history.push(RoutePath.SignUp);
           }}
         >
           가입하기
