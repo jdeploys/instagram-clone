@@ -23,13 +23,11 @@ const useArticleHooks = () => {
     return articleApi
       .countList()
       .then((result) => {
-        // @ts-ignore (타입 불일치 임시처리)
-        setArticleCount(result.data || 0);
+        setArticleCount(result.data.count || 0);
       })
       .then(() => articleApi.articlesList(params))
       .then((result) => {
-        console.log(unionWith(articles, result.data, (a, b) => a.id === b.id));
-        setArticles((prevState) =>
+        setArticles((prevState ) =>
           unionWith(prevState, result.data, (a, b) => a.id === b.id)
         );
       });
