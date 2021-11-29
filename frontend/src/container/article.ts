@@ -27,7 +27,7 @@ const useArticleHooks = () => {
       })
       .then(() => articleApi.articlesList(params))
       .then((result) => {
-        setArticles((prevState ) =>
+        setArticles((prevState) =>
           unionWith(prevState, result.data, (a, b) => a.id === b.id)
         );
       });
@@ -44,11 +44,18 @@ const useArticleHooks = () => {
     return uploadApi.uploadCreate(data);
   };
 
+  const deleteArticle = (id: string) => {
+    // delete cache
+    setArticles(articles.filter((row) => row.id !== id));
+    return articleApi.articlesDelete(id);
+  };
+
   return {
     articleCount,
     articles,
     getArticles: handleGetArticles,
     createArticle,
+    deleteArticle,
     uploadImage,
   };
 };

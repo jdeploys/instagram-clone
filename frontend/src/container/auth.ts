@@ -18,8 +18,13 @@ const useAuthHooks = () => {
   const [user, setUser] = useState<UsersPermissionsUser | null>();
 
   const handleSignIn = (params: SignInParams) => {
+    const formDataParams = new FormData();
+    formDataParams.append('identifier', params.identifier);
+    formDataParams.append('password', params.password);
+
     return authApi
-      .localCreate(params)
+      // @ts-ignore 해당 부분 수정 가능할때 수정
+      .localCreate(formDataParams)
       .then((result) => {
         setIsSignIn(true);
         saveToken(result.data.jwt || '');
@@ -33,7 +38,7 @@ const useAuthHooks = () => {
 
   const signOut = () => {
     removeToken();
-    setUser(null);
+    setIsSignIn(false);
   };
 
   useEffect(() => {

@@ -62,7 +62,7 @@ const ArticleList = () => {
       refreshFunction={refresh}
     >
       {articles.map((row) => (
-        <ArticleCard key={row.id} article={row} />
+        <ArticleCard key={row.id} article={row} onDelete={refresh} />
       ))}
     </InfiniteScroll>
   );

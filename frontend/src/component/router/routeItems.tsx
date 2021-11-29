@@ -24,4 +24,9 @@ export const routeItems: RouteProps[] = [
     exact: true,
     component: loadable(() => import('../../page/article/WriteArticlePage')),
   },
+  {
+    path: [RoutePath.My],
+    exact: true,
+    component: loadable(() => import('../../page/my/MyPage')),
+  },
 ];

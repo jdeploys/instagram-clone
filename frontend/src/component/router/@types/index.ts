@@ -7,4 +7,5 @@ export enum RoutePath {
   CreateArticle = '/article/create',
   ArticleEdit = '/article/edit/:id',
   ArticleDetail = '/article/:id',
+  My = '/my',
 }
