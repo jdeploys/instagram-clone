@@ -34,6 +34,10 @@
     "user": {
       "plugin": "users-permissions",
       "model": "user"
+    },
+    "likes": {
+      "via": "article",
+      "collection": "like"
     }
   }
 }

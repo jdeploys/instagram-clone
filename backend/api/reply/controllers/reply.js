@@ -5,4 +5,11 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+  async count(ctx) {
+    const count = ctx.query._q
+      ? await strapi.services.reply.countSearch(ctx.query)
+      : await strapi.services.reply.count(ctx.query);
+    return { count };
+  },
+};
