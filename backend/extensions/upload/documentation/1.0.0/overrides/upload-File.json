@@ -1,0 +1,95 @@
+{
+  "paths": {
+    "/upload/": {
+      "post": {
+        "deprecated": false,
+        "description": "파일 업로드",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": ["Upload - File"],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "type": "file",
+                    "description": "The file(s) to upload. The value(s) can be a Buffer or Stream"
+                  },
+                  "path": {
+                    "type": "string",
+                    "description": "(optional): The folder where the file(s) will be uploaded to (only supported on strapi-upload-aws-s3 now)."
+                  },
+                  "refId": {
+                    "type": "string",
+                    "description": "(optional): The ID of the entry which the file(s) will be linked to."
+                  },
+                  "ref": {
+                    "type": "string",
+                    "description": "(optional): The name of the model which the file(s) will be linked to."
+                  },
+                  "source": {
+                    "type": "string",
+                    "description": "(optional): The name of the plugin where the model is located."
+                  },
+                  "field": {
+                    "type": "string",
+                    "description": "(optional): The field of the entry which the file(s) will be precisely linked to."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
