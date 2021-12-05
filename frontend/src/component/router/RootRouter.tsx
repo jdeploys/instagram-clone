@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { routeItems } from './routeItems';
+import NavBar from '@/component/nav/NavBar';
 
 const RootRouter = () => {
   return (
@@ -15,6 +16,7 @@ const RootRouter = () => {
           />
         ))}
       </Switch>
+      <NavBar />
     </BrowserRouter>
   );
 };

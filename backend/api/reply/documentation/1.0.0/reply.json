@@ -548,6 +548,12 @@
               "user": {
                 "type": "string"
               },
+              "likes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "published_at": {
                 "type": "string"
               },
@@ -597,6 +603,9 @@
                 "type": "boolean"
               },
               "role": {
+                "type": "string"
+              },
+              "like": {
                 "type": "string"
               },
               "created_by": {

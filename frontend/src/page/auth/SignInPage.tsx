@@ -1,34 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '@/component/form/Input';
-import { signIn, SignInParams } from '@/api/users.api';
 import Button from '@/component/button/Button';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
 import { RoutePath } from '@/component/router/@types';
+import { AuthContainer } from '@/container/auth';
+import { SignInParams } from '@/api/@types/auth';
 
 const SignInPage = () => {
   const history = useHistory();
+  const { signIn, isSignIn } = AuthContainer.useContainer();
   const [data, setData] = useState<SignInParams>({
     identifier: '',
     password: '',
   });
 
+  useEffect(() => {
+    if (isSignIn) {
+      history.push(RoutePath.ArticleList);
+    }
+  }, [isSignIn]);
+
   const onClickSignIn = () => {
-    signIn(data)
-      .then((result) => {
-        if (result.status === 200) {
-          toast('로그인 되었습니다.');
-        }
-      })
-      .catch((e) => {
-        toast.error(
-          <span>
-            로그인에 실패했습니다.
-            <br />
-            {e}
-          </span>
-        );
-      });
+    signIn(data).catch((e) => {
+      toast.error(
+        <span>
+          로그인에 실패했습니다.
+          <br />
+          {e}
+        </span>
+      );
+    });
   };
 
   return (
@@ -50,6 +52,11 @@ const SignInPage = () => {
           className="mx-10 mt-2"
           type="password"
           placeholder="비밀번호"
+          onKeyPress={(e) => {
+            if (e.key.toLowerCase() === 'enter') {
+              onClickSignIn();
+            }
+          }}
           onChangeText={(value) => {
             setData((prev) => ({
               ...prev,
@@ -82,7 +89,7 @@ const SignInPage = () => {
         <button
           className="ml-2 text-blue-500 font-semibold"
           onClick={() => {
-            history.push(RoutePath.signUp);
+            history.push(RoutePath.SignUp);
           }}
         >
           가입하기

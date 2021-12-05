@@ -3,14 +3,21 @@
     "/auth/local": {
       "post": {
         "deprecated": false,
-        "description": "Login a user using the identifiers email and password",
+        "description": "식별자와 패스워드로 로그인할 때 사용합니다.",
         "responses": {
           "200": {
             "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UsersPermissionsUser"
+                  "properties": {
+                    "jwt": {
+                      "type": "string"
+                    },
+                    "user": {
+                      "$ref": "#/components/schemas/UsersPermissionsUser"
+                    }
+                  }
                 }
               }
             }

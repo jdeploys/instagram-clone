@@ -12,14 +12,21 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "animate.css": "^4.1.1",
+    "animejs": "^3.2.1",
     "axios": "^0.23.0",
+    "lodash": "^4.17.21",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.20.2",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-responsive-carousel": "^3.2.22",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-toastify": "^8.0.3",
     "typescript": "^4.1.2",
+    "unstated-next": "^1.1.0",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -27,7 +34,9 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "gen": "dtsgen --url https://jsbackend.herokuapp.com/swagger/openapi.json --out src/@types/index.d.ts && prettier --write \"./src/@types/index.d.ts\""
+    "ts-check": "tsc --skipLibCheck --noEmit",
+    "gen": "dtsgen --url https://jsbackend.herokuapp.com/swagger/openapi.json --out src/@types/index.d.ts && prettier --write \"./src/@types/index.d.ts\"",
+    "gen-api": "npx swagger-typescript-api -p https://jsbackend.herokuapp.com/swagger/openapi.json -o ./src/api --axios --modular --single-http-client  --extract-request-params --extract-request-body"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +57,8 @@
     ]
   },
   "devDependencies": {
+    "@types/animejs": "^3.1.4",
+    "@types/lodash": "^4.14.177",
     "@types/react-router-dom": "^5.3.1",
     "autoprefixer": "^9",
     "craco-alias": "^3.0.1",
